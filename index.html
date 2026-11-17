@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+
+  <title>Happy Birthday, Babe ❤️</title>
+  <meta name="description" content="A little letter, a few memories and some wishes, made with love for someone very special.">
+  <meta name="theme-color" content="#641F35">
+
+  <!-- Open Graph / sharing.
+       After deploying, change og:image to the full address of the photo,
+       e.g. https://your-site.netlify.app/assets/images/photo-01.jpg -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Happy Birthday, Babe ❤️">
+  <meta property="og:description" content="A little letter, a few memories and some wishes, made with love for someone very special.">
+  <meta property="og:image" content="assets/images/photo-01.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&family=DM+Sans:wght@400;500;600&family=Great+Vibes&display=swap" rel="stylesheet">
+
+  <!-- The hero photo is the first thing shown after the envelope opens -->
+  <link rel="preload" as="image" href="assets/images/photo-01.jpg">
+
+  <link rel="stylesheet" href="styles.css">
+  <noscript><style>.intro{display:none!important}.music{display:none!important}</style></noscript>
+</head>
+<body>
+
+<a class="skip-link" href="#letter">Skip to the letter</a>
+
+<!-- ============ SECTION 01 — THE ENVELOPE ============ -->
+<div class="intro" id="intro" role="region" aria-label="Opening envelope">
+  <canvas class="particles" id="introParticles" aria-hidden="true"></canvas>
+
+  <div class="intro__inner">
+    <p class="label intro__label" data-intro="fade">A little something for you</p>
+
+    <div class="env" id="envelope" data-intro="env">
+      <div class="env__back"></div>
+
+      <div class="env__letter" id="envLetter" aria-hidden="true">
+        <span class="env__letter-script">For <span data-recipient>Babe</span></span>
+        <svg class="env__letter-heart" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21s-7.5-4.6-9.6-9.2C.9 8.4 2.7 5 6 5c2 0 3.4 1.1 4 2.4h4C14.6 6.1 16 5 18 5c3.3 0 5.1 3.4 3.6 6.8C19.5 16.4 12 21 12 21z"/></svg>
+      </div>
+
+      <div class="env__front" aria-hidden="true">
+        <i class="env__fold env__fold--l"></i>
+        <i class="env__fold env__fold--r"></i>
+        <i class="env__fold env__fold--b"></i>
+      </div>
+
+      <div class="env__flap" id="envFlap" aria-hidden="true">
+        <i class="env__flap-face env__flap-face--out"></i>
+        <i class="env__flap-face env__flap-face--in"></i>
+      </div>
+
+      <div class="seal" id="seal" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 20.5s-6.8-4.2-8.7-8.4C2 9.2 3.6 6 6.6 6c1.8 0 3.1 1 3.7 2.2h3.4C14.3 7 15.6 6 17.4 6c3 0 4.6 3.2 3.3 6.1C18.8 16.3 12 20.5 12 20.5z"/></svg>
+      </div>
+    </div>
+
+    <div class="intro__copy" data-intro="fade">
+      <p class="intro__to">To my favourite person...</p>
+      <p class="intro__sub">I made something special for you. Take a moment, and open your heart.</p>
+    </div>
+
+    <button class="btn btn--solid intro__btn" id="openBtn" type="button" data-intro="fade">Open your letter</button>
+    <button class="intro__skip" id="skipBtn" type="button" data-intro="fade">Skip animation</button>
+  </div>
+</div>
+
+<!-- ============ AUTO-SCROLL CONTROL ============ -->
+<button class="autoscroll" id="autoBtn" type="button" aria-pressed="false" hidden>
+  <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m7 7 5 5 5-5"/><path d="m7 13 5 5 5-5"/></svg>
+  <span class="autoscroll__txt">Auto-scroll</span>
+</button>
+
+<!-- ============ MUSIC CONTROL ============ -->
+<div class="music" id="music" hidden>
+  <button class="music__disc" id="musicToggle" type="button" aria-label="Play music">
+    <span class="vinyl" aria-hidden="true"></span>
+    <svg class="ic ic-play" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><polygon points="7 4 20 12 7 20 7 4"/></svg>
+    <svg class="ic ic-pause" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><rect x="6" y="4" width="4.5" height="16" rx="1"/><rect x="13.5" y="4" width="4.5" height="16" rx="1"/></svg>
+  </button>
+  <button class="music__mute" id="musicMute" type="button" aria-label="Mute music" aria-pressed="false">
+    <svg class="ic ic-vol" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 5 6 9H3v6h3l5 4V5z"/><path d="M15.5 8.5a5 5 0 0 1 0 7"/><path d="M18.4 5.6a9 9 0 0 1 0 12.8"/></svg>
+    <svg class="ic ic-mute" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 5 6 9H3v6h3l5 4V5z"/><line x1="22" y1="9" x2="16" y2="15"/><line x1="16" y1="9" x2="22" y2="15"/></svg>
+  </button>
+</div>
+
+<main id="main">
+
+  <!-- ============ SECTION 02 — THE FIRST REVEAL ============ -->
+  <section class="hero" id="hero" aria-labelledby="heroTitle">
+    <div class="hero__text">
+      <p class="label hero__label" data-hero>To the one who holds my heart</p>
+      <h1 class="hero__title" id="heroTitle" data-hero>
+        <span class="hero__line">Happy Birthday,</span>
+        <span class="hero__line"><em><span data-recipient>Babe</span>.</em></span>
+      </h1>
+      <p class="hero__copy" data-hero>Today, I celebrate more than the day you were born. I celebrate the beautiful person you are, the happiness you bring into my life, and the privilege of having you as someone so special to me.</p>
+    </div>
+
+    <div class="hero__media" id="heroMedia">
+      <div class="hero__ring" aria-hidden="true"></div>
+      <div class="hero__arch" id="heroArch">
+        <img id="heroImg" src="assets/images/photo-01.jpg" alt="A portrait of the birthday boy, smiling" width="576" height="1024" fetchpriority="high" decoding="async">
+      </div>
+    </div>
+
+    <a class="scroll-cue" href="#letter" data-hero aria-label="Scroll down to the letter">
+      <span>Scroll</span><i aria-hidden="true"></i>
+    </a>
+  </section>
+
+  <!-- ============ SECTION 03 — THE MAIN LOVE LETTER ============ -->
+  <section class="letter" id="letter" aria-labelledby="letterTitle">
+    <header class="section-head">
+      <p class="label" data-reveal>A letter from my heart</p>
+      <h2 class="h2" id="letterTitle" data-reveal>Some words I've been wanting you to hear...</h2>
+    </header>
+
+    <article class="paper" aria-label="Love letter">
+      <div class="paper__inner">
+        <p class="paper__greeting" data-reveal>My dearest <span data-recipient>Babe</span>,</p>
+
+        <!-- Edit the letter here. Wrap a phrase in <mark class="hl"> … </mark> for the handwritten highlight. -->
+        <p data-reveal>I have tried to find the perfect words to express just how much you mean to me, but somehow, words never seem enough when it comes to someone as special as you.</p>
+
+        <p data-reveal>Today is your day, and <mark class="hl">I wish you could see yourself through my eyes</mark>, even if just for a moment. You would understand how much beauty you bring into my world, how much your presence means to me, and how grateful I am that life brought you into my story.</p>
+
+        <p data-reveal>I hope you never forget how special you are. Not just because today is your birthday, but because of the person you are every single day.</p>
+
+        <p data-reveal>Thank you for the little things, the laughter, the conversations, the memories, the moments that might seem ordinary to you but <mark class="hl">mean more to me than you could ever imagine</mark>.</p>
+
+        <p data-reveal>You have a way of making my days feel warmer. Even in moments when everything feels ordinary, having you in my life gives those moments a different kind of meaning.</p>
+
+        <p data-reveal>On this special day, I pray that life becomes kinder to you. May every beautiful dream in your heart find its way into reality. May you experience opportunities that exceed your expectations, happiness that never feels distant, and peace that stays with you through every season of life.</p>
+
+        <p data-reveal>I pray you never lose the beautiful parts of yourself. Never stop dreaming, never stop growing, and never doubt how much you are capable of achieving.</p>
+
+        <p data-reveal>I want to celebrate your victories, encourage you through your difficult moments, laugh with you over the smallest things, and create countless memories that we will look back on with smiles.</p>
+
+        <p data-reveal>I cannot promise that every day will be perfect, but I hope you always remember that you are <mark class="hl">deeply appreciated, genuinely loved and endlessly worth celebrating</mark>.</p>
+
+        <p data-reveal>If I could make one wish for you today, it would be that <mark class="hl">life gives you back every bit of happiness you have brought into my world</mark>.</p>
+
+        <p class="paper__big" data-reveal>Happy Birthday, my love.</p>
+
+        <p data-reveal>You are special. You are appreciated. And you will always have <mark class="hl">a beautiful place in my heart</mark>.</p>
+
+        <p class="paper__close" data-reveal>With all my love,<br><span class="paper__sender" data-sender>Your girl</span></p>
+
+        <p class="signature" id="signature" aria-label="Forever yours."><span>Forever yours.</span></p>
+      </div>
+    </article>
+  </section>
+
+  <!-- ============ SECTION 04 — GALLERY ============ -->
+  <section class="gallery" id="gallery" aria-labelledby="galleryTitle">
+    <header class="section-head">
+      <p class="label" data-reveal>Memories</p>
+      <h2 class="h2" id="galleryTitle" data-reveal>Some memories are too beautiful to exist only in our minds.</h2>
+      <p class="section-head__sub" data-reveal>So here are a few moments, little pieces of time, and memories I wish I could keep forever.</p>
+    </header>
+
+    <!-- Filled from birthdayMedia (photos + videos) in script.js -->
+    <div class="gallery__grid" id="galleryGrid"></div>
+
+    <p class="gallery__end" data-reveal>If I could pause time, there are moments with you I'd stay in forever.</p>
+  </section>
+
+  <!-- ============ SECTION 05 — THINGS I ADORE ============ -->
+  <section class="adore" id="adore" aria-labelledby="adoreTitle">
+    <header class="section-head">
+      <p class="label" data-reveal>Things I adore about you</p>
+      <h2 class="h2" id="adoreTitle" data-reveal>If only you knew how special you are...</h2>
+    </header>
+
+    <div class="adore__grid">
+      <article class="card" data-card>
+        <span class="card__num">01</span>
+        <h3 class="card__title">Your heart</h3>
+        <p>I admire the person you are and the kindness you carry. There is something beautiful about the way you make the people around you feel valued.</p>
+      </article>
+      <article class="card" data-card>
+        <span class="card__num">02</span>
+        <h3 class="card__title">Your smile</h3>
+        <p>Your smile has a way of making even an ordinary moment feel special. I hope you never run out of reasons to wear it.</p>
+      </article>
+      <article class="card" data-card>
+        <span class="card__num">03</span>
+        <h3 class="card__title">Your strength</h3>
+        <p>I admire your determination and the way you keep moving forward. I hope you always remember how capable you are.</p>
+      </article>
+      <article class="card" data-card>
+        <span class="card__num">04</span>
+        <h3 class="card__title">Your presence</h3>
+        <p>Sometimes, it is not even about what you say or do. It is simply the comfort of knowing you are there.</p>
+      </article>
+      <article class="card" data-card>
+        <span class="card__num">05</span>
+        <h3 class="card__title">Your future</h3>
+        <p>I believe there are beautiful things waiting for you. I cannot wait to see the person you continue becoming.</p>
+      </article>
+    </div>
+  </section>
+
+  <!-- ============ SECTION 06 — MY WISHES FOR YOU ============ -->
+  <section class="wishes" id="wishes" aria-labelledby="wishesTitle">
+    <div class="particles-wrap" aria-hidden="true"><canvas class="particles" id="wishesParticles"></canvas></div>
+    <div class="wishes__inner">
+      <header class="wishes__head">
+        <p class="label label--gold" data-reveal>My wishes for you</p>
+        <h2 class="wishes__title" id="wishesTitle" data-reveal>On your new chapter...</h2>
+        <span class="orn" aria-hidden="true" data-reveal><i></i></span>
+      </header>
+
+      <ul class="wishes__list">
+        <li class="wish" data-wish>May your dreams become your reality.</li>
+        <li class="wish" data-wish>May your efforts bring beautiful results.</li>
+        <li class="wish" data-wish>May your heart always find peace.</li>
+        <li class="wish" data-wish>May happiness follow you into every room.</li>
+        <li class="wish" data-wish>May you never lack reasons to smile.</li>
+        <li class="wish" data-wish>May the coming years be kinder, brighter and more beautiful than you imagined.</li>
+      </ul>
+
+      <p class="wish wish--final" data-wish>And above everything, may you always remember how <em>deeply you are loved.</em></p>
+    </div>
+  </section>
+
+  <!-- ============ SECTION 07 — THE FINAL BIRTHDAY MOMENT ============ -->
+  <section class="finale" id="finale" aria-labelledby="finaleTitle">
+    <div class="finale__bg" aria-hidden="true">
+      <img id="finalImg" src="assets/images/photo-10.jpg" alt="" loading="lazy" decoding="async">
+    </div>
+    <canvas class="particles" id="finaleParticles" aria-hidden="true"></canvas>
+
+    <div class="finale__inner">
+      <p class="label label--gold" data-final>And before you go...</p>
+      <h2 class="finale__title" id="finaleTitle" data-final>Happy Birthday, <em><span data-recipient>Babe</span>.</em></h2>
+      <p class="finale__wish" data-final>May this year bring you closer to everything your heart has been quietly wishing for.</p>
+      <p class="finale__thanks" data-final>Thank you for being you. Thank you for existing. And thank you for giving me another reason to celebrate someone so special.</p>
+      <p class="finale__sign" data-final>All my love, always.</p>
+      <button class="btn btn--ghost" id="againBtn" type="button" data-final>Read my letter again</button>
+    </div>
+  </section>
+</main>
+
+<!-- ============ LIGHTBOX ============ -->
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Photo viewer" hidden>
+  <div class="lightbox__backdrop" data-close></div>
+  <button class="lb-btn lb-close" id="lbClose" type="button" aria-label="Close photo viewer">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg>
+  </button>
+  <button class="lb-btn lb-prev" id="lbPrev" type="button" aria-label="Previous photo">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m15 5-7 7 7 7"/></svg>
+  </button>
+  <button class="lb-btn lb-next" id="lbNext" type="button" aria-label="Next photo">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 5 7 7-7 7"/></svg>
+  </button>
+  <figure class="lightbox__figure" id="lbFigure">
+    <div class="lb-media" id="lbMedia">
+      <img id="lbImg" alt="">
+      <video id="lbVideo" playsinline preload="none" hidden></video>
+      <button class="lb-bigplay" id="lbBigPlay" type="button" aria-label="Play video" hidden>
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5.2v13.6a1 1 0 0 0 1.5.86l11-6.8a1 1 0 0 0 0-1.72l-11-6.8A1 1 0 0 0 8 5.2z"/></svg>
+      </button>
+      <p class="lb-error" id="lbError" role="alert" hidden>This video couldn't be loaded right now.</p>
+      <div class="lb-controls" id="lbControls" hidden>
+        <button type="button" id="lbPlay" class="lb-c" aria-label="Play">
+          <svg class="ic ic-p" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><polygon points="7 4 20 12 7 20 7 4"/></svg>
+          <svg class="ic ic-z" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><rect x="6" y="4" width="4.5" height="16" rx="1"/><rect x="13.5" y="4" width="4.5" height="16" rx="1"/></svg>
+        </button>
+        <input type="range" id="lbSeek" class="lb-range lb-seek" min="0" max="1000" value="0" aria-label="Video progress">
+        <span class="lb-time" id="lbTime">0:00 / 0:00</span>
+        <button type="button" id="lbMute" class="lb-c" aria-label="Mute">
+          <svg class="ic ic-vol" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 5 6 9H3v6h3l5 4V5z"/><path d="M15.5 8.5a5 5 0 0 1 0 7"/></svg>
+          <svg class="ic ic-mt" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 5 6 9H3v6h3l5 4V5z"/><path d="m16 9 6 6M22 9l-6 6"/></svg>
+        </button>
+        <input type="range" id="lbVol" class="lb-range lb-vol" min="0" max="1" step="0.05" value="0.8" aria-label="Volume">
+        <button type="button" id="lbFs" class="lb-c" aria-label="Full screen">
+          <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 3H5a2 2 0 0 0-2 2v3M16 3h3a2 2 0 0 1 2 2v3M8 21H5a2 2 0 0 1-2-2v-3M16 21h3a2 2 0 0 0 2-2v-3"/></svg>
+        </button>
+      </div>
+    </div>
+    <figcaption class="lightbox__cap"><span id="lbCap"></span><small id="lbCount" aria-live="polite"></small></figcaption>
+  </figure>
+</div>
+
+<script src="assets/vendor/gsap.min.js"></script>
+<script src="assets/vendor/ScrollTrigger.min.js"></script>
+<script src="script.js"></script>
+</body>
+</html>
